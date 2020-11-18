@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hostings",
+  "info": {
+    "name": "hosting",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "datetime",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "remarks": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

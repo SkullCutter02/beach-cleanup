@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 
+import { UserContext } from "../context/UserContext";
+
 const Navbar = () => {
+  const data = useContext(UserContext);
+
   return (
     <React.Fragment>
       <nav>
@@ -11,7 +15,11 @@ const Navbar = () => {
               <a>Home</a>
             </Link>
           </li>
-          <li>Host Your Own</li>
+          <li>
+            <Link href={data === null ? "/signup" : "/host"}>
+              <a>Host Your Own</a>
+            </Link>
+          </li>
           <li>My Hostings</li>
           <li>
             <Link href={"/about"}>
@@ -21,8 +29,14 @@ const Navbar = () => {
         </ul>
         <ul className="nav-right">
           <li>
-            <button type={"button"}>Sign Up</button>
-            <button type={"button"}>Log In</button>
+            {data === null ? (
+              <div>
+                <button type={"button"}>Sign Up</button>
+                <button type={"button"}>Log In</button>
+              </div>
+            ) : (
+              <div className="username">{data.user.username}</div>
+            )}
           </li>
         </ul>
       </nav>
@@ -67,6 +81,10 @@ const Navbar = () => {
         a {
           color: black;
           text-decoration: none;
+        }
+
+        .username {
+          margin-right: 25px;
         }
       `}</style>
     </React.Fragment>
