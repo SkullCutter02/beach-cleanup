@@ -1,5 +1,7 @@
 import React from "react";
 
+import countries from "../countries";
+
 const HomePage = () => {
   function changeText(e) {
     let text = e.target.textContent;
@@ -17,10 +19,9 @@ const HomePage = () => {
             <i className="fas fa-caret-down" />
           </button>
           <div className="dropdown-content">
-            <p onClick={changeText}>Hong Kong</p>
-            <p onClick={changeText}>United States</p>
-            <p onClick={changeText}>Canada</p>
-            <p onClick={changeText}>Japan</p>
+            {countries.map((country) => {
+              return <p onClick={changeText}>{country}</p>;
+            })}
           </div>
         </section>
         <button type={"button"}>Find!</button>
