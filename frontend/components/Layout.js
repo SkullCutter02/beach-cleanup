@@ -6,14 +6,14 @@ import Navbar from "./Navbar";
 const Layout = (props) => {
   return (
     <React.Fragment>
+      <Head>
+        <title>Beach Cleanup | Find One or Host Your Own</title>
+        <script
+          src="https://kit.fontawesome.com/a40d908160.js"
+          crossOrigin="anonymous"
+        />
+      </Head>
       <div>
-        <Head>
-          <title>Beach Cleanup</title>
-          <script
-            src="https://kit.fontawesome.com/a40d908160.js"
-            crossOrigin="anonymous"
-          />
-        </Head>
         <Navbar />
         {props.children}
       </div>

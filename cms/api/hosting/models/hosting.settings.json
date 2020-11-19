@@ -15,16 +15,13 @@
       "type": "string",
       "required": true
     },
-    "date": {
-      "type": "datetime",
-      "required": true
-    },
     "description": {
       "type": "text",
       "required": true
     },
     "remarks": {
-      "type": "string"
+      "type": "string",
+      "default": "No Remarks"
     },
     "user": {
       "type": "string"
@@ -32,6 +29,17 @@
     "country": {
       "type": "string",
       "required": true
+    },
+    "day": {
+      "type": "integer",
+      "max": 31,
+      "min": 1
+    },
+    "month": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
     }
   }
 }

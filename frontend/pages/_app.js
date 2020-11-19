@@ -2,11 +2,14 @@ import React from "react";
 import "../styles.css";
 
 import { UserContextProvider } from "../context/UserContext";
+import { CountryContextProvider } from "../context/CountryContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <UserContextProvider>
-      <Component {...pageProps} />
+      <CountryContextProvider>
+        <Component {...pageProps} />
+      </CountryContextProvider>
     </UserContextProvider>
   );
 }

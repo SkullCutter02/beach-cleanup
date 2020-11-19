@@ -21,6 +21,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>My Hostings</li>
+          <li>Forums</li>
           <li>
             <Link href={"/about"}>
               <a>About Us</a>

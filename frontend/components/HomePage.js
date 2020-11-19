@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useRouter } from "next/router";
 
 import countries from "../countries";
+import { CountryContext } from "../context/CountryContext";
 
 const HomePage = () => {
+  const router = useRouter();
+  const data = useContext(CountryContext);
+
   function changeText(e) {
     let text = e.target.textContent;
-    let button = document.getElementById("btn");
+    let button = document.getElementById("btn-text");
     button.innerText = text;
+  }
+
+  function handle() {
+    let buttonText = document.getElementById("btn-text").innerText;
+    data.storeCountry(buttonText);
+    if (buttonText === "Select Your Country") {
+      alert("Please choose your country");
+    } else {
+      router.push("/results");
+    }
   }
 
   return (
@@ -14,8 +29,8 @@ const HomePage = () => {
       <main>
         <h1>Find a beach cleanup near you!</h1>
         <section className="dropdown">
-          <button className="dropdown-btn" id="btn">
-            Select your country
+          <button className="dropdown-btn">
+            <span id="btn-text">Select Your Country</span>
             <i className="fas fa-caret-down" />
           </button>
           <div className="dropdown-content">
@@ -24,7 +39,7 @@ const HomePage = () => {
             })}
           </div>
         </section>
-        <button type={"button"}>Find!</button>
+        <button onClick={handle}>Find!</button>
       </main>
 
       <style jsx>{`
@@ -67,6 +82,8 @@ const HomePage = () => {
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           padding: 12px 16px;
           z-index: 1;
+          max-height: 200px;
+          overflow: scroll;
         }
 
         .dropdown:hover .dropdown-content {
@@ -79,6 +96,9 @@ const HomePage = () => {
 
         i {
           margin-left: 10px;
+          position: absolute;
+          top: 30%;
+          left: 80%;
         }
       `}</style>
     </React.Fragment>
