@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import Layout from "../../components/Layout";
 import { CountryContext } from "../../context/CountryContext";
@@ -39,13 +40,12 @@ const Results = () => {
           ) : (
             state.map((hosting) => (
               <div className="container">
-                <p className="location">Location: {hosting.location}</p>
+                <Link href={`/results/${hosting.id}`}>
+                  <p className="location">Location: {hosting.location}</p>
+                </Link>
                 <p className="date">
                   Date: {`${hosting.day}th ${hosting.month} ${hosting.year}`}
                 </p>
-                {/*<p>Description: {hosting.description}</p>*/}
-                {/*<p>Remarks: {hosting.remarks}</p>*/}
-                {/*<p>Country: {hosting.country}</p>*/}
               </div>
             ))
           )}
