@@ -43,8 +43,9 @@ const Host = () => {
         headers: {
           Authorization: `Bearer ${data.jwt}`,
         },
-      }).catch((err) => console.log(err));
-      await router.push(`/results/${uuid}`);
+      })
+        .then(router.push(`/results/${uuid}`))
+        .catch((err) => console.log(err));
     }
   };
 

@@ -33,9 +33,12 @@ const HostingSpecifics = () => {
               )} ${state[0].date.slice(0, 4)}`}
             </p>
             <p>Time: {state[0].time}</p>
-            <p>Duration: {state[0].duration}</p>
+            <p>Duration: {state[0].duration}hrs</p>
             <p>Description: {state[0].description}</p>
-            <p>Remarks: {state[0].remarks}</p>
+            <p>
+              Remarks:{" "}
+              {state[0].remarks.length === 0 ? "No Remarks" : state[0].remarks}
+            </p>
             <button className="subscribe">Subscribe to this event</button>
           </div>
         )}
