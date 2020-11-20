@@ -31,6 +31,19 @@ const Results = () => {
     }
   }, [state]);
 
+  function determine(number) {
+    switch (number.toString().charAt(number.toString().length - 1)) {
+      case "1":
+        return "st";
+      case "2":
+        return "nd";
+      case "3":
+        return "rd";
+      default:
+        return "th";
+    }
+  }
+
   return (
     <React.Fragment>
       <Layout>
@@ -44,7 +57,10 @@ const Results = () => {
                   <p className="location">Location: {hosting.location}</p>
                 </Link>
                 <p className="date">
-                  Date: {`${hosting.day}th ${hosting.month} ${hosting.year}`}
+                  Date:{" "}
+                  {`${hosting.day}${determine(hosting.day)} ${hosting.month} ${
+                    hosting.year
+                  }`}
                 </p>
               </div>
             ))
