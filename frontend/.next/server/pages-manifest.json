@@ -3,7 +3,8 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/host": "pages/host.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/results": "pages/results.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/results/[id]": "pages/results/[id].js",
+  "/host": "pages/host.js"
 }

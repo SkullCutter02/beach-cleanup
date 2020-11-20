@@ -10,7 +10,7 @@ const Results = () => {
   const country = useContext(CountryContext);
   const [state, setState] = useState(undefined);
 
-  fetch("http://localhost:1337/hostings")
+  fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
     .then((res) => res.json())
     .then((data) =>
       setState(

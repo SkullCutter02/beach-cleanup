@@ -5,10 +5,13 @@ export const UserContext = createContext(undefined);
 
 export class UserContextProvider extends Component {
   async componentDidMount() {
-    const { data } = await axios.post("http://localhost:1337/auth/local", {
-      identifier: "dummy@gmail.com",
-      password: "123456789",
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_HOST}/auth/local`,
+      {
+        identifier: "dummy@gmail.com",
+        password: "123456789",
+      }
+    );
     this.setState(data);
   }
 
