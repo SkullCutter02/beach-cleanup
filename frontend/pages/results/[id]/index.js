@@ -15,6 +15,26 @@ const HostingSpecifics = () => {
     })
     .catch((err) => console.log(err));
 
+  let end = "";
+  if (state.length !== 0) {
+    switch (
+      state[0].day.toString().charAt(state[0].day.toString().length - 1)
+    ) {
+      case "1":
+        end = "st";
+        break;
+      case "2":
+        end = "nd";
+        break;
+      case "3":
+        end = "rd";
+        break;
+      default:
+        end = "th";
+        break;
+    }
+  }
+
   return (
     <React.Fragment>
       <Layout>
@@ -24,7 +44,7 @@ const HostingSpecifics = () => {
           <div className="container">
             <p className="location">Location: {state[0].location}</p>
             <p>
-              Date: {`${state[0].day}th ${state[0].month} ${state[0].year}`}
+              Date: {`${state[0].day}${end} ${state[0].month} ${state[0].year}`}
             </p>
             <p>Description: {state[0].description}</p>
             <p>Remarks: {state[0].remarks}</p>

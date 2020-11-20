@@ -36,8 +36,34 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$USER_HOME$/node_modules/prettier" />
     <property name="run.prettier.on.save" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:1337/hostings" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="HTTP Request.generated-requests#1">
+    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.All in generated-requests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="false" transferred="true" />
   <component name="TaskManager">
@@ -47,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605666619677</updated>
-      <workItem from="1605666621071" duration="23162000" />
+      <workItem from="1605666621071" duration="24057000" />
     </task>
     <servers />
   </component>
@@ -55,9 +81,33 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="236" y="74" key="SettingsEditor" timestamp="1605700279887">
+    <state x="191" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605845569025">
       <screen x="0" y="23" width="1440" height="813" />
     </state>
-    <state x="236" y="74" key="SettingsEditor/0.23.1440.813@0.23.1440.813" timestamp="1605700279887" />
+    <state x="191" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.813@0.23.1440.813" timestamp="1605845569025" />
+    <state width="1358" height="194" key="GridCell.Tab.0.bottom" timestamp="1605845621033">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state width="1358" height="194" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1605845621033" />
+    <state width="1358" height="194" key="GridCell.Tab.0.center" timestamp="1605845621032">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state width="1358" height="194" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1605845621032" />
+    <state width="1358" height="194" key="GridCell.Tab.0.left" timestamp="1605845621031">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state width="1358" height="194" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1605845621031" />
+    <state width="1358" height="194" key="GridCell.Tab.0.right" timestamp="1605845621032">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state width="1358" height="194" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1605845621032" />
+    <state x="315" y="171" key="IDE.errors.dialog" timestamp="1605845365216">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state x="315" y="171" key="IDE.errors.dialog/0.23.1440.813@0.23.1440.813" timestamp="1605845365216" />
+    <state x="236" y="74" key="SettingsEditor" timestamp="1605845408091">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state x="236" y="74" key="SettingsEditor/0.23.1440.813@0.23.1440.813" timestamp="1605845408091" />
   </component>
 </project>

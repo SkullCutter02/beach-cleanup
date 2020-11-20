@@ -8,7 +8,7 @@ import { CountryContext } from "../../context/CountryContext";
 const Results = () => {
   const router = useRouter();
   const country = useContext(CountryContext);
-  const [state, setState] = useState();
+  const [state, setState] = useState(undefined);
 
   fetch("http://localhost:1337/hostings")
     .then((res) => res.json())
