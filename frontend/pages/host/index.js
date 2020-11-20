@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
 
 import Layout from "../../components/Layout";
 import countries from "../../countries";
@@ -9,9 +11,11 @@ import { UserContext } from "../../context/UserContext";
 const Host = () => {
   const initialText = "Select Country";
   const data = useContext(UserContext);
+  const router = useRouter();
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+
     let location = document.getElementById("location").value;
     let country = document.getElementById("btn-text").innerText;
     let description = document.getElementById("description").value;
@@ -19,9 +23,29 @@ const Host = () => {
     let time = document.getElementById("time").value;
     let duration = document.getElementById("duration").value;
     let remarks = document.getElementById("remarks").value;
-    console.log(date, time);
+    let uuid = uuidv4();
 
-    // axios.post(`${process.env.NEXT_PUBLIC_HOST}/hostings`);
+    if (country !== initialText) {
+      await axios({
+        method: "POST",
+        url: `${process.env.NEXT_PUBLIC_HOST}/hostings`,
+        data: {
+          location: location,
+          country: country,
+          description: description,
+          date: date,
+          time: time,
+          duration: duration,
+          remarks: remarks,
+          uuid: uuid,
+          user: data.user.username,
+        },
+        headers: {
+          Authorization: `Bearer ${data.jwt}`,
+        },
+      }).catch((err) => console.log(err));
+      await router.push(`/results/${uuid}`);
+    }
   };
 
   return (
@@ -56,7 +80,7 @@ const Host = () => {
             <input
               required
               type="number"
-              step="1"
+              step="0.1"
               id="duration"
               name="duration"
             />

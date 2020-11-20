@@ -3,6 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/results": "pages/results.js",
-  "/results/[id]": "pages/results/[id].js"
+  "/host": "pages/host.js",
+  "/results/[id]": "pages/results/[id].js",
+  "/results": "pages/results.js"
 }
