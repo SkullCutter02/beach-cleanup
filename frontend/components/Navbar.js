@@ -20,7 +20,11 @@ const Navbar = () => {
               <a>Host Your Own</a>
             </Link>
           </li>
-          <li>My Hostings</li>
+          <li>
+            <Link href={"/myhostings"}>
+              <a>My Hostings</a>
+            </Link>
+          </li>
           <li>Forums</li>
           <li>
             <Link href={"/about"}>

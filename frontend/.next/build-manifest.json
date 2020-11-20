@@ -33,6 +33,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/host.js"
+    ],
+    "/myhostings": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/myhostings.js"
     ]
   },
   "ampFirstPages": []
