@@ -26,17 +26,6 @@
     "user": {
       "type": "string"
     },
-    "day": {
-      "type": "integer",
-      "max": 31,
-      "min": 1
-    },
-    "month": {
-      "type": "string"
-    },
-    "year": {
-      "type": "integer"
-    },
     "country": {
       "type": "string",
       "unique": false,
@@ -46,6 +35,15 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "date": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "integer"
     }
   }
 }

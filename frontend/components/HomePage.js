@@ -9,7 +9,6 @@ const HomePage = () => {
   const router = useRouter();
   const data = useContext(CountryContext);
   const initialText = "Select Your Country";
-  console.log(process.env.NEXT_PUBLIC_HOST);
 
   function handle() {
     let buttonText = document.getElementById("btn-text").innerText;

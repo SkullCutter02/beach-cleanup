@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import Layout from "../../../components/Layout";
+import { determineEnd, determineMonth } from "../../../Utils";
 
 const HostingSpecifics = () => {
   const router = useRouter();
@@ -15,26 +16,6 @@ const HostingSpecifics = () => {
     })
     .catch((err) => console.log(err));
 
-  let end = "";
-  if (state.length !== 0) {
-    switch (
-      state[0].day.toString().charAt(state[0].day.toString().length - 1)
-    ) {
-      case "1":
-        end = "st";
-        break;
-      case "2":
-        end = "nd";
-        break;
-      case "3":
-        end = "rd";
-        break;
-      default:
-        end = "th";
-        break;
-    }
-  }
-
   return (
     <React.Fragment>
       <Layout>
@@ -44,8 +25,15 @@ const HostingSpecifics = () => {
           <div className="container">
             <p className="location">Location: {state[0].location}</p>
             <p>
-              Date: {`${state[0].day}${end} ${state[0].month} ${state[0].year}`}
+              Date:{" "}
+              {`${state[0].date.slice(8, 10)}${determineEnd(
+                state[0].date.charAt(9)
+              )} ${determineMonth(
+                state[0].date.slice(5, 7)
+              )} ${state[0].date.slice(0, 4)}`}
             </p>
+            <p>Time: {state[0].time}</p>
+            <p>Duration: {state[0].duration}</p>
             <p>Description: {state[0].description}</p>
             <p>Remarks: {state[0].remarks}</p>
             <button className="subscribe">Subscribe to this event</button>

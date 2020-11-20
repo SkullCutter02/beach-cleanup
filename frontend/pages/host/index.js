@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
+import axios from "axios";
 
 import Layout from "../../components/Layout";
 import countries from "../../countries";
 import Dropdown from "../../components/Dropdown";
+import { UserContext } from "../../context/UserContext";
 
 const Host = () => {
   const initialText = "Select Country";
+  const data = useContext(UserContext);
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    let location = document.getElementById("location").value;
+    let country = document.getElementById("btn-text").innerText;
+    let description = document.getElementById("description").value;
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+    let duration = document.getElementById("duration").value;
+    let remarks = document.getElementById("remarks").value;
+    console.log(date, time);
+
+    // axios.post(`${process.env.NEXT_PUBLIC_HOST}/hostings`);
   };
 
   return (
@@ -33,12 +45,21 @@ const Host = () => {
               id="description"
               cols="50"
               rows="10"
+              minLength="50"
             />
-            <label htmlFor="date">Date and Time of this cleanup</label>
+            <label htmlFor="date">Date and Start Time of this cleanup</label>
             <div className="date-time">
               <input required type="date" id="date" name="date" />
               <input required type="time" id="time" name="time" />
             </div>
+            <label htmlFor="duration">Duration of this cleanup (in hrs)</label>
+            <input
+              required
+              type="number"
+              step="1"
+              id="duration"
+              name="duration"
+            />
             <label htmlFor="remarks">Any remarks?</label>
             <textarea name="remarks" id="remarks" cols="50" rows="7" />
             <button type="submit">Host</button>
@@ -85,7 +106,7 @@ const Host = () => {
         }
 
         button {
-          margin-top: 20px;
+          margin: 20px 0;
         }
       `}</style>
     </React.Fragment>

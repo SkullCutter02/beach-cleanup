@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import Layout from "../../components/Layout";
 import { CountryContext } from "../../context/CountryContext";
+import { determineEnd, determineMonth } from "../../Utils";
 
 const Results = () => {
   const router = useRouter();
@@ -31,19 +32,6 @@ const Results = () => {
     }
   }, [state]);
 
-  function determine(number) {
-    switch (number.toString().charAt(number.toString().length - 1)) {
-      case "1":
-        return "st";
-      case "2":
-        return "nd";
-      case "3":
-        return "rd";
-      default:
-        return "th";
-    }
-  }
-
   return (
     <React.Fragment>
       <Layout>
@@ -58,9 +46,11 @@ const Results = () => {
                 </Link>
                 <p className="date">
                   Date:{" "}
-                  {`${hosting.day}${determine(hosting.day)} ${hosting.month} ${
-                    hosting.year
-                  }`}
+                  {`${hosting.date.slice(8, 10)}${determineEnd(
+                    hosting.date.charAt(9)
+                  )} ${determineMonth(
+                    hosting.date.slice(5, 7)
+                  )} ${hosting.date.slice(0, 4)}`}
                 </p>
               </div>
             ))
