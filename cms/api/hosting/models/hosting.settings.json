@@ -26,10 +26,6 @@
     "user": {
       "type": "string"
     },
-    "country": {
-      "type": "string",
-      "required": true
-    },
     "day": {
       "type": "integer",
       "max": 31,
@@ -40,6 +36,16 @@
     },
     "year": {
       "type": "integer"
+    },
+    "country": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "uuid": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

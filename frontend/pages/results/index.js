@@ -40,7 +40,7 @@ const Results = () => {
           ) : (
             state.map((hosting) => (
               <div className="container">
-                <Link href={`/results/${hosting.id}`}>
+                <Link href={`/results/${hosting.uuid}`}>
                   <p className="location">Location: {hosting.location}</p>
                 </Link>
                 <p className="date">

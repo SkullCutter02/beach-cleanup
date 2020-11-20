@@ -6,19 +6,19 @@ import Layout from "../../../components/Layout";
 const HostingSpecifics = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [state, setState] = useState();
+  const [state, setState] = useState([]);
 
   fetch("http://localhost:1337/hostings")
     .then((res) => res.json())
     .then((data) => {
-      setState(data.filter((hosting) => parseInt(hosting.id) === parseInt(id)));
+      setState(data.filter((hosting) => hosting.uuid === id));
     })
     .catch((err) => console.log(err));
 
   return (
     <React.Fragment>
       <Layout>
-        {state === undefined ? (
+        {state.length === 0 ? (
           <div>Loading...</div>
         ) : (
           <div className="container">
