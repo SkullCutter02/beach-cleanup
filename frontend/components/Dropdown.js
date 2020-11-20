@@ -23,6 +23,7 @@ const Dropdown = ({ array, text }) => {
 
       <style jsx>{`
         button {
+          margin-top: 10px;
           min-width: 100px;
           height: 25px;
           border: 1px solid grey;
@@ -65,7 +66,7 @@ const Dropdown = ({ array, text }) => {
         i {
           margin-left: 10px;
           position: absolute;
-          top: 30%;
+          top: 48%;
           left: 80%;
         }
       `}</style>

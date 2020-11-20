@@ -48,13 +48,37 @@ const HostingSpecifics = () => {
             </p>
             <p>Description: {state[0].description}</p>
             <p>Remarks: {state[0].remarks}</p>
+            <button className="subscribe">Subscribe to this event</button>
           </div>
         )}
       </Layout>
 
       <style jsx>{`
-        p {
+        .container {
           margin: 30px 20px;
+        }
+
+        .container p,
+        .container .subscribe {
+          margin-top: 20px;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .subscribe {
+          background: greenyellow;
+          border: 1px solid grey;
+          border-radius: 4px;
+          width: 150px;
+          height: 50px;
+          font-size: 1rem;
+          transition: all ease-in 0.1s;
+        }
+
+        .subscribe:hover {
+          background: yellow;
         }
 
         .location {
