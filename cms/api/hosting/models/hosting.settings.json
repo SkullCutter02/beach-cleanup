@@ -44,6 +44,11 @@
     },
     "duration": {
       "type": "integer"
+    },
+    "users": {
+      "via": "hostings",
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }

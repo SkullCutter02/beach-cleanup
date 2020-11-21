@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 import Layout from "../../../components/Layout";
 import { determineEnd, determineMonth } from "../../../Utils";
+import { UserContext } from "../../../context/UserContext";
 
 const HostingSpecifics = () => {
   const router = useRouter();
   const { id } = router.query;
   const [state, setState] = useState([]);
+  const userData = useContext(UserContext);
 
-  fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
-    .then((res) => res.json())
-    .then((data) => {
-      setState(data.filter((hosting) => hosting.uuid === id));
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
+      .then((res) => res.json())
+      .then((data) => {
+        setState(data.filter((hosting) => hosting.uuid === id));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const subscribe = () => {
+    axios({
+      method: "PUT",
+      url: `${process.env.NEXT_PUBLIC_HOST}/hostings/${state[0].id}`,
+      data: {
+        ...state[0],
+        users: [...state[0].users, userData.user],
+      },
+      headers: {
+        Authorization: `Bearer ${userData.jwt}`,
+      },
     })
-    .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res);
+        router.push("/subscribedevents");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <React.Fragment>
@@ -39,7 +63,9 @@ const HostingSpecifics = () => {
               Remarks:{" "}
               {state[0].remarks.length === 0 ? "No Remarks" : state[0].remarks}
             </p>
-            <button className="subscribe">Subscribe to this event</button>
+            <button className="subscribe" onClick={subscribe}>
+              Subscribe to this event
+            </button>
           </div>
         )}
       </Layout>
@@ -66,6 +92,7 @@ const HostingSpecifics = () => {
           height: 50px;
           font-size: 1rem;
           transition: all ease-in 0.1s;
+          cursor: pointer;
         }
 
         .subscribe:hover {

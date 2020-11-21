@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/host": "pages/host.js",
   "/": "pages/index.js",
-  "/results": "pages/results.js",
   "/results/[id]": "pages/results/[id].js",
-  "/host/[hostuuid]/edit/[randomuuid]": "pages/host/[hostuuid]/edit/[randomuuid].js"
+  "/results": "pages/results.js"
 }

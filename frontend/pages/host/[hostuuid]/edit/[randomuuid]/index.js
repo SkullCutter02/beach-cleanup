@@ -22,7 +22,7 @@ const EditHosting = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
     let location = document.getElementById("location").value;
@@ -33,7 +33,7 @@ const EditHosting = () => {
     let duration = document.getElementById("duration").value;
     let remarks = document.getElementById("remarks").value;
 
-    axios({
+    await axios({
       method: "PUT",
       url: `${process.env.NEXT_PUBLIC_HOST}/hostings/${state[0].id}`,
       data: {
@@ -50,9 +50,9 @@ const EditHosting = () => {
       headers: {
         Authorization: `Bearer ${userData.jwt}`,
       },
-    })
-      .then(router.push(`/results/${hostuuid}`))
-      .catch((err) => console.log(err));
+    }).catch((err) => console.log(err));
+
+    await router.push(`/results/${hostuuid}`);
   };
 
   return (
@@ -120,7 +120,7 @@ const EditHosting = () => {
               rows="7"
               defaultValue={state && state[0].remarks}
             />
-            <button type="submit">Host</button>
+            <button type="submit">Save Changes</button>
           </form>
         </main>
       </Layout>

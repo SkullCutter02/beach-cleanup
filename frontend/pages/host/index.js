@@ -19,7 +19,7 @@ const Host = () => {
     }
   }, []);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
     let location = document.getElementById("location").value;
@@ -32,7 +32,7 @@ const Host = () => {
     let uuid = uuidv4();
 
     if (country !== initialText) {
-      axios({
+      await axios({
         method: "POST",
         url: `${process.env.NEXT_PUBLIC_HOST}/hostings`,
         data: {
@@ -49,9 +49,9 @@ const Host = () => {
         headers: {
           Authorization: `Bearer ${data.jwt}`,
         },
-      })
-        .then(router.push(`/results/${uuid}`))
-        .catch((err) => console.log(err));
+      }).catch((err) => console.log(err));
+
+      await router.push(`/results/${uuid}`);
     }
   };
 

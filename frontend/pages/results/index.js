@@ -11,17 +11,19 @@ const Results = () => {
   const country = useContext(CountryContext);
   const [state, setState] = useState(undefined);
 
-  fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
-    .then((res) => res.json())
-    .then((data) =>
-      setState(
-        data.filter(
-          (hosting) =>
-            hosting.country.toLowerCase() === country.country.toLowerCase()
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
+      .then((res) => res.json())
+      .then((data) =>
+        setState(
+          data.filter(
+            (hosting) =>
+              hosting.country.toLowerCase() === country.country.toLowerCase()
+          )
         )
       )
-    )
-    .catch((err) => console.log(err));
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     if (state !== undefined) {
