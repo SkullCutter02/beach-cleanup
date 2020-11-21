@@ -45,7 +45,7 @@ const MyHostings = () => {
           <div>Loading...</div>
         ) : (
           state.map((hosting) => (
-            <div className="container" key={hosting.id}>
+            <div className="container">
               <Link href={`/results/${hosting.uuid}`}>
                 <p className="location">Location: {hosting.location}</p>
               </Link>

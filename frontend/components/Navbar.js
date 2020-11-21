@@ -25,7 +25,11 @@ const Navbar = () => {
               <a>My Hostings</a>
             </Link>
           </li>
-          <li>Forums</li>
+          <li>
+            <Link href={"/subscribedevents"}>
+              <a>Subscribed Events</a>
+            </Link>
+          </li>
           <li>
             <Link href={"/about"}>
               <a>About Us</a>

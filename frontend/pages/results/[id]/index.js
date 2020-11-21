@@ -21,8 +21,8 @@ const HostingSpecifics = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const subscribe = async () => {
-    await axios({
+  const subscribe = () => {
+    axios({
       method: "PUT",
       url: `${process.env.NEXT_PUBLIC_HOST}/hostings/${state[0].id}`,
       data: {
@@ -33,7 +33,10 @@ const HostingSpecifics = () => {
         Authorization: `Bearer ${userData.jwt}`,
       },
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        router.push("/subscribedevents");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -61,7 +64,7 @@ const HostingSpecifics = () => {
               {state[0].remarks.length === 0 ? "No Remarks" : state[0].remarks}
             </p>
             <button className="subscribe" onClick={subscribe}>
-              Sign up for this event
+              Subscribe to this event
             </button>
           </div>
         )}
