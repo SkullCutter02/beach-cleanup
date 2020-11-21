@@ -16,7 +16,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href={data === null ? "/signup" : "/host"}>
+            <Link href={"/host"}>
               <a>Host Your Own</a>
             </Link>
           </li>

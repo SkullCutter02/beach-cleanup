@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
@@ -12,6 +12,12 @@ const Host = () => {
   const initialText = "Select Country";
   const data = useContext(UserContext);
   const router = useRouter();
+
+  useEffect(() => {
+    if (data === null) {
+      router.push("/signup");
+    }
+  }, []);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -62,7 +68,8 @@ const Host = () => {
             <label htmlFor="country">Choose the country of this cleanup</label>
             <Dropdown array={countries} text={initialText} />
             <label htmlFor="description">
-              Give a description of this cleanup
+              Give a description of this cleanup (provide information, what to
+              bring etc.)
             </label>
             <textarea
               required
@@ -70,7 +77,7 @@ const Host = () => {
               id="description"
               cols="50"
               rows="10"
-              minLength="50"
+              minLength="150"
             />
             <label htmlFor="date">Date and Start Time of this cleanup</label>
             <div className="date-time">
