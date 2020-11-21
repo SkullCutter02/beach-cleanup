@@ -2,7 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/myhostings": "pages/myhostings.js",
   "/": "pages/index.js",
-  "/signup": "pages/signup.js"
+  "/host/[hostuuid]/edit/[randomuuid]": "pages/host/[hostuuid]/edit/[randomuuid].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/myhostings": "pages/myhostings.js",
+  "/signup": "pages/signup.js",
+  "/results/[id]": "pages/results/[id].js",
+  "/host": "pages/host.js"
 }
