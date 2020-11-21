@@ -19,7 +19,7 @@ const Host = () => {
     }
   }, []);
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
 
     let location = document.getElementById("location").value;
@@ -32,7 +32,7 @@ const Host = () => {
     let uuid = uuidv4();
 
     if (country !== initialText) {
-      await axios({
+      axios({
         method: "POST",
         url: `${process.env.NEXT_PUBLIC_HOST}/hostings`,
         data: {

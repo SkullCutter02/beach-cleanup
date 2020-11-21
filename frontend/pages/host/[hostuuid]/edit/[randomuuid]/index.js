@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 import Layout from "../../../../../components/Layout";
 import Dropdown from "../../../../../components/Dropdown";
 import countries from "../../../../../countries";
+import { UserContext } from "../../../../../context/UserContext";
 
 const EditHosting = () => {
   const router = useRouter();
   const { hostuuid } = router.query;
   const [state, setState] = useState();
+  const userData = useContext(UserContext);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
@@ -21,6 +24,35 @@ const EditHosting = () => {
 
   const submit = (e) => {
     e.preventDefault();
+
+    let location = document.getElementById("location").value;
+    let country = document.getElementById("btn-text").innerText;
+    let description = document.getElementById("description").value;
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+    let duration = document.getElementById("duration").value;
+    let remarks = document.getElementById("remarks").value;
+
+    axios({
+      method: "PUT",
+      url: `${process.env.NEXT_PUBLIC_HOST}/hostings/${state[0].id}`,
+      data: {
+        location: location,
+        country: country,
+        description: description,
+        date: date,
+        time: time,
+        duration: duration,
+        remarks: remarks,
+        uuid: hostuuid,
+        user: userData.user.username,
+      },
+      headers: {
+        Authorization: `Bearer ${userData.jwt}`,
+      },
+    })
+      .then(router.push(`/results/${hostuuid}`))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -37,10 +69,10 @@ const EditHosting = () => {
               type="text"
               id="location"
               name="location"
-              value={state[0]?.location}
+              defaultValue={state && state[0].location}
             />
             <label htmlFor="country">Choose the country of this cleanup</label>
-            <Dropdown array={countries} text={state[0]?.country} />
+            <Dropdown array={countries} text={state && state[0].country} />
             <label htmlFor="description">
               Give a description of this cleanup (provide information, what to
               bring etc.)
@@ -52,7 +84,7 @@ const EditHosting = () => {
               cols="50"
               rows="10"
               minLength="150"
-              value={state[0]?.description}
+              defaultValue={state && state[0].description}
             />
             <label htmlFor="date">Date and Start Time of this cleanup</label>
             <div className="date-time">
@@ -61,14 +93,14 @@ const EditHosting = () => {
                 type="date"
                 id="date"
                 name="date"
-                value={state[0]?.date}
+                defaultValue={state && state[0].date}
               />
               <input
                 required
                 type="time"
                 id="time"
                 name="time"
-                value={state[0]?.time}
+                defaultValue={state && state[0].time}
               />
             </div>
             <label htmlFor="duration">Duration of this cleanup (in hrs)</label>
@@ -78,7 +110,7 @@ const EditHosting = () => {
               step="0.1"
               id="duration"
               name="duration"
-              value={state[0]?.duration}
+              defaultValue={state && state[0].duration}
             />
             <label htmlFor="remarks">Any remarks?</label>
             <textarea
@@ -86,7 +118,7 @@ const EditHosting = () => {
               id="remarks"
               cols="50"
               rows="7"
-              value={state[0]?.remarks}
+              defaultValue={state && state[0].remarks}
             />
             <button type="submit">Host</button>
           </form>

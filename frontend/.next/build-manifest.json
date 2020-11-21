@@ -29,35 +29,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/host": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/host.js"
-    ],
     "/host/[hostuuid]/edit/[randomuuid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/host/[hostuuid]/edit/[randomuuid].js"
     ],
-    "/myhostings": [
+    "/results": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/myhostings.js"
-    ],
-    "/next/dist/pages/_error": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/next/dist/pages/_error.js"
+      "static/chunks/pages/results.js"
     ],
     "/results/[id]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/results/[id].js"
-    ],
-    "/signup": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/signup.js"
     ]
   },
   "ampFirstPages": []
