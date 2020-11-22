@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const data = useContext(UserContext);
+  const router = useRouter();
+
+  const logout = () => {
+    localStorage.clear();
+    router.reload();
+  };
 
   return (
     <React.Fragment>
@@ -40,7 +47,12 @@ const Navbar = () => {
                 <button type={"button"}>Log In</button>
               </div>
             ) : (
-              <div className="username">{data.user.username}</div>
+              <div className="signed-in-right">
+                <div className="username">{data.user.username}</div>
+                <button type={"button"} onClick={logout}>
+                  Log Out
+                </button>
+              </div>
             )}
           </li>
         </ul>
@@ -90,6 +102,11 @@ const Navbar = () => {
 
         .username {
           margin-right: 25px;
+        }
+
+        .signed-in-right {
+          display: flex;
+          align-items: center;
         }
       `}</style>
     </React.Fragment>
