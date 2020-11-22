@@ -24,15 +24,17 @@ const MyHostings = () => {
           )
         )
         .catch((err) => console.log(err));
-    } else {
-      if (
-        localStorage.getItem("identifier") === null ||
-        localStorage.getItem("password") === null
-      ) {
-        router.push("/login");
-      }
     }
   }, [userData]);
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("identifier") === null ||
+      localStorage.getItem("password") === null
+    ) {
+      router.push("/login");
+    }
+  }, []);
 
   const remove = async (hosting) => {
     const confirm = window.confirm(
