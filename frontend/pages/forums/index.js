@@ -16,44 +16,53 @@ const Forums = () => {
   return (
     <React.Fragment>
       <Layout>
-        <main>
-          {forums === undefined ? (
-            <div>Loading...</div>
-          ) : (
-            forums.map((forum) => (
-              <div key={forum.id} className="container">
-                <Link href={`/forums/${forum.uuid}`}>
-                  <p className="title">{forum.title}</p>
-                </Link>
-                <div>
-                  <p>by {forum.user}</p>
-                  <p>{forum.date}</p>
+        <section>
+          <main>
+            {forums === undefined ? (
+              <div>Loading...</div>
+            ) : (
+              forums.map((forum) => (
+                <div key={forum.id} className="container">
+                  <Link href={`/forums/${forum.uuid}`}>
+                    <p className="title">{forum.title}</p>
+                  </Link>
+                  <div>
+                    <p>by {forum.user}</p>
+                    <p>{forum.date}</p>
+                  </div>
                 </div>
-              </div>
-            ))
-          )}
+              ))
+            )}
+          </main>
           <aside>
             <Link href={"/forums/create"}>
               <button>Create Post</button>
             </Link>
           </aside>
-        </main>
+        </section>
       </Layout>
 
       <style jsx>{`
+        section {
+          display: flex;
+        }
+
         main {
           display: flex;
+          flex-direction: column;
+          width: 80%;
+          margin-top: 30px;
         }
 
         .container {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 70%;
+          width: 90%;
           height: 90px;
           border: 1px solid lightgray;
           border-radius: 30px;
-          margin: 40px;
+          margin: 10px 40px;
         }
 
         aside {

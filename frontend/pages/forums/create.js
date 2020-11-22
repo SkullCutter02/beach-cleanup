@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 import Layout from "../../components/Layout";
 import { UserContext } from "../../context/UserContext";
@@ -18,13 +19,14 @@ const CreateForum = () => {
     }
   }, []);
 
-  const post = (e) => {
+  const post = async (e) => {
     e.preventDefault();
 
     let title = document.getElementById("title").value;
     let body = document.getElementById("body").value;
+    let uuid = uuidv4();
 
-    axios({
+    await axios({
       method: "POST",
       url: `${process.env.NEXT_PUBLIC_HOST}/forums`,
       data: {
@@ -32,11 +34,14 @@ const CreateForum = () => {
         body: body,
         user: userData.user.username,
         date: new Date().toDateString(),
+        uuid: uuid,
       },
       headers: {
         Authorization: `Bearer ${userData.jwt}`,
       },
     }).catch((err) => console.log(err));
+
+    await router.push(`/forums/${uuid}`);
   };
 
   return (

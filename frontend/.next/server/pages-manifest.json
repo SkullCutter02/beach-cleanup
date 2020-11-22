@@ -3,8 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/forums/[uuid]": "pages/forums/[uuid].js",
-  "/forums": "pages/forums.js",
-  "/forums/create": "pages/forums/create.js",
   "/host": "pages/host.js"
 }

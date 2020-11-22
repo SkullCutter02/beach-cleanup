@@ -15,14 +15,6 @@ const Post = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  String.prototype.replaceAt = function (index, replacement) {
-    if (index >= this.length) {
-      return this.valueOf();
-    }
-
-    return this.substring(0, index) + replacement + this.substring(index + 1);
-  };
-
   function styleBody(body) {
     if (body !== undefined) {
       body = body.replaceAll("|", "<br><br>");
