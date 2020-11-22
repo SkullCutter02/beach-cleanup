@@ -5,12 +5,13 @@ import { useRouter } from "next/router";
 import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
-  const data = useContext(UserContext);
+  const userData = useContext(UserContext).data;
   const router = useRouter();
 
   const logout = () => {
     localStorage.clear();
     router.reload();
+    router.push("/");
   };
 
   return (
@@ -41,14 +42,16 @@ const Navbar = () => {
         </ul>
         <ul className="nav-right">
           <li>
-            {data === null ? (
+            {userData === null ? (
               <div>
-                <button type={"button"}>Sign Up</button>
+                <Link href={"/signup"}>
+                  <button type={"button"}>Sign Up</button>
+                </Link>
                 <button type={"button"}>Log In</button>
               </div>
             ) : (
               <div className="signed-in-right">
-                <div className="username">{data.user.username}</div>
+                <div className="username">{userData?.user?.username}</div>
                 <button type={"button"} onClick={logout}>
                   Log Out
                 </button>

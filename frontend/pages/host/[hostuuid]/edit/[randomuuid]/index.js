@@ -11,7 +11,7 @@ const EditHosting = () => {
   const router = useRouter();
   const { hostuuid } = router.query;
   const [state, setState] = useState();
-  const userData = useContext(UserContext);
+  const userData = useContext(UserContext).data;
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)

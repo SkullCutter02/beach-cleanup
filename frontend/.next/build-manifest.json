@@ -29,11 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/about": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/about.js"
-    ],
     "/host": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -48,6 +43,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/next/dist/pages/_error.js"
+    ],
+    "/results/[id]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/results/[id].js"
     ],
     "/signup": [
       "static/chunks/main.js",

@@ -10,7 +10,7 @@ import { UserContext } from "../../context/UserContext";
 
 const Host = () => {
   const initialText = "Select Country";
-  const data = useContext(UserContext);
+  const data = useContext(UserContext).data;
   const router = useRouter();
 
   useEffect(() => {

@@ -10,7 +10,7 @@ import { UserContext } from "../context/UserContext";
 import { determineEnd, determineMonth } from "../Utils";
 
 const MyHostings = () => {
-  const userData = useContext(UserContext);
+  const userData = useContext(UserContext).data;
   const router = useRouter();
   const [state, setState] = useState();
 
