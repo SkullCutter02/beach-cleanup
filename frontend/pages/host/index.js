@@ -14,8 +14,11 @@ const Host = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (data === null) {
-      router.push("/signup");
+    if (
+      localStorage.getItem("identifier") === null ||
+      localStorage.getItem("password") === null
+    ) {
+      router.push("/login");
     }
   }, []);
 

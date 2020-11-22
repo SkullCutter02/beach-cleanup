@@ -29,7 +29,7 @@ const MyHostings = () => {
         localStorage.getItem("identifier") === null ||
         localStorage.getItem("password") === null
       ) {
-        router.push("/signup");
+        router.push("/login");
       }
     }
   }, [userData]);

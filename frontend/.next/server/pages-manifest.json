@@ -3,9 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/signup": "pages/signup.js",
   "/host": "pages/host.js",
-  "/myhostings": "pages/myhostings.js",
-  "/results/[id]": "pages/results/[id].js",
-  "/signup": "pages/signup.js"
+  "/login": "pages/login.js"
 }

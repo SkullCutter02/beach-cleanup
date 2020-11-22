@@ -47,7 +47,9 @@ const Navbar = () => {
                 <Link href={"/signup"}>
                   <button type={"button"}>Sign Up</button>
                 </Link>
-                <button type={"button"}>Log In</button>
+                <Link href={"/login"}>
+                  <button type={"button"}>Log In</button>
+                </Link>
               </div>
             ) : (
               <div className="signed-in-right">

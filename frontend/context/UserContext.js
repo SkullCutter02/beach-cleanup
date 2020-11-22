@@ -38,6 +38,8 @@ export class UserContextProvider extends Component {
         })
         .catch((err) => console.log(err));
       this.setState({ ...this.state, data: data });
+    } else {
+      localStorage.clear();
     }
   }
 
