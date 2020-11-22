@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 import Layout from "../components/Layout";
 import { UserContext } from "../context/UserContext";
@@ -14,12 +15,6 @@ const MyHostings = () => {
   const [state, setState] = useState();
 
   useEffect(() => {
-    if (userData === null) {
-      router.push("/signup");
-    }
-  }, []);
-
-  useEffect(() => {
     if (userData !== null) {
       fetch(`${process.env.NEXT_PUBLIC_HOST}/hostings`)
         .then((res) => res.json())
@@ -29,8 +24,34 @@ const MyHostings = () => {
           )
         )
         .catch((err) => console.log(err));
+    } else {
+      if (
+        localStorage.getItem("identifier") === null ||
+        localStorage.getItem("password") === null
+      ) {
+        router.push("/signup");
+      }
     }
   }, [userData]);
+
+  const remove = async (hosting) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete your hosting?"
+    );
+    if (confirm) {
+      await axios({
+        method: "DELETE",
+        url: `${process.env.NEXT_PUBLIC_HOST}/hostings/${hosting.id}`,
+        data: {
+          hosting,
+        },
+        headers: {
+          Authorization: `Bearer ${userData.jwt}`,
+        },
+      }).catch((err) => console.log(err));
+      router.reload();
+    }
+  };
 
   return (
     <React.Fragment>
@@ -52,6 +73,7 @@ const MyHostings = () => {
               <Link href={`/host/${hosting.uuid}/edit/${uuidv4()}`}>
                 <i className="far fa-edit" />
               </Link>
+              <i className="far fa-trash-alt" onClick={() => remove(hosting)} />
               <p className="date">
                 Date:{" "}
                 {`${hosting.date.slice(8, 10)}${determineEnd(
@@ -94,13 +116,17 @@ const MyHostings = () => {
 
         i {
           position: absolute;
-          left: 70%;
+          left: 55%;
           color: grey;
           cursor: pointer;
         }
 
         i:hover {
           color: black;
+        }
+
+        .fa-trash-alt {
+          left: 65%;
         }
       `}</style>
     </React.Fragment>
