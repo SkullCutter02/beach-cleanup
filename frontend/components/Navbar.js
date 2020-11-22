@@ -6,11 +6,11 @@ import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const userData = useContext(UserContext).data;
+  const clearData = useContext(UserContext).clearData;
   const router = useRouter();
 
   const logout = () => {
-    localStorage.clear();
-    router.reload();
+    clearData();
     router.push("/");
   };
 

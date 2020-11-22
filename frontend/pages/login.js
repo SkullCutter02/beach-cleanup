@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
 
 import Layout from "../components/Layout";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
   const router = useRouter();
+  const setData = useContext(UserContext).setData;
 
   const login = async (e) => {
     e.preventDefault();
@@ -21,10 +23,8 @@ const Login = () => {
       })
       .then((res) => {
         if (res.status >= 200 && res.status <= 299) {
-          localStorage.setItem("identifier", identifier);
-          localStorage.setItem("password", password);
+          setData(res.data, password);
           router.push("/");
-          router.reload();
         } else {
           throw new Error(res.statusText);
         }
